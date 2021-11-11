@@ -52,10 +52,14 @@
       <th>
         Keterangan
       </th>
-    </tr>
+      <th>
+        QrCode
+      </th>
     <th>
-      QrCode
-    </th>
+      View / Delet
+    </th>  
+    </tr>
+    
   </thead>
   
   <tbody>
@@ -109,10 +113,16 @@
       <td>
         {{ $m->description }}
       </td>
-    </tr>
     <td>
       {{ $m->qrcode }}
     </td>
+    <td>
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <a id="viewitem"class="btn btn-success" aria-current="page" href="{{ '/viewItem/'.$Item->id }}">View</a>
+      <a id="#"class="btn btn-danger" aria-current="page" href="#">Delet</a>
+    </div>
+    </td>
+    </tr>
     @endforeach
   </tbody>
   

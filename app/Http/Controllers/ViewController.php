@@ -15,8 +15,8 @@ class ViewController extends Controller
      */
     public function index()
     {
-        $Items = Item::all();
-        return view('showItem', ['items' => $Items]);
+        $items = Item::all();
+        return view('showItem', compact('items'));
     }
 
     /**
@@ -48,7 +48,8 @@ class ViewController extends Controller
      */
     public function show($id)
     {
-        //
+        $Item = Item::findOrFail($id);
+        return view('showItem', compact('Item'));
     }
 
     /**

@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/listItem', 'ItemControllers@index');
-Route::get('/viewItem', 'ViewController@index');
-Route::post('/master', 'ItemControllers@store');
-Route::get('/qrcode', 'QrcodeController@index');
+Route::get('/viewItem/{id}', 'ViewController@show'); // go to viewItem
+Route::get('/listItem', 'ItemControllers@index'); // go to listItem
+Route::get('/', 'ViewController@index'); // go to showItem
+Route::post('/master', 'ItemControllers@store'); // send insrtdata to tabel
+Route::get('/qrcode', 'QrcodeController@index'); // qrcode
