@@ -1,49 +1,130 @@
 @extends('layouts.master')
 @section('content')
-<form action="/master" method="POST">
-    @csrf
-    <div class="mb-3">
-      <label for="item_code" class="form-label">kode barang</label>
-      <input type="text" class="form-control" id="item_code" name="item_code">
-    </div>
-    <div class="mb-3">
-      <label for="nama" class="form-label">nama</label>
-      <input type="text" class="form-control" id="nama" name="name">
-    </div>
-    <div class="mb-3">
-      <label for="nomer_register" class="form-label">no register</label>
-      <input type="number" class="form-control" id="nomer_register" name="register">
-    </div>
-    <div class="mb-3">
-        <label for="ukuran" class="form-label">ukuran</label>
-        <input type="number" class="form-control" id="ukuran" name="size">
-      </div>
-      <div class="mb-3">
-        <label for="brand" class="form-label">brand</label>
-        <input type="text" class="form-control" id="brand" name="brand">
-      </div>
-    <div class="mb-3">
-        <label for="bahan" class="form-label">bahan</label>
-        <input type="text" class="form-control" id="bahan" name="material">
-      </div>
-      <div class="mb-3">
-        <label for="harga" class="form-label">harga</label>
-        <input type="number" class="form-control" id="harga" name="price">
-      </div>
-      <div class="mb-3">
-        <label for="asalbarang" class="form-label">asal usul</label>
-        <input type="text" class="form-control" id="asalbarang" name="origin">
-      </div>
-      <div class="mb-3">
-        <label for="tahun pembelian" class="form-label">tahun pembelian`</label>
-        <input type="number" class="form-control" id="tahun pembelian`" name="purchased">
-      </div>
-      <div class="mb-3">
-        <label for="keterangan" class="form-label">keterangan</label>
-        <textarea class="form-control" placeholder="Leave a comment here" name="description" id="keterangan" style="height: 100px"></textarea>
-      </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+<table class="table table-striped justify-content-center">
+  <thead>
+    <tr>
+      <th>
+        NO
+      </th>
+      <th>
+        Kode Barang
+      </th>
+      <th>
+        Nama Barang
+      </th>
+      <th>
+        No Register
+      </th>
+      <th>
+        Merk/Type
+      </th>
+      <th>
+        Ukuran/CC
+      </th>
+      <th>
+        Bahan
+      </th>
+      <th>
+        Tahun Pembelian
+      </th>
+      <th>
+        No Pabrik
+      </th>
+      <th>
+        No Rangka
+      </th>
+      <th>
+        No Mesin
+      </th>
+      <th>
+        No Polisi
+      </th>
+      <th>
+        No BPKB
+      </th>
+      <th>
+        Asal-Usul
+      </th>
+      <th>
+        Harga (Rp)
+      </th>
+      <th>
+        Keterangan
+      </th>
+      <th>
+        QrCode
+      </th>
+    <th>
+      View / Delet
+    </th>  
+    </tr>
+    
+  </thead>
+  
+  <tbody>
+    @foreach ($items as $m)
+    <tr>
+      <td>
+        {{ $loop->iteration }}
+      </td>
+      <td>
+        {{ $m->item_code }}
+      </td>
+      <td>
+        {{ $m->name }}
+      </td>
+      <td>
+        {{ $m->number_register }}
+      </td>
+      <td>
+        {{ $m->brand }}
+      </td>
+      <td>
+        {{ $m->size }}
+      </td>
+      <td>
+        {{ $m->material }}
+      </td>
+      <td>
+        {{ $m->purchased }}
+      </td>
+      <td>
+        No Pabrik
+      </td>
+      <td>
+        No Rangka
+      </td>
+      <td>
+        No Mesin
+      </td>
+      <td>
+        No Polisi
+      </td>
+      <td>
+        No BPKB
+      </td>
+      <td>
+        {{ $m->origin }}
+      </td>
+      <td>
+        {{ $m->price }}
+      </td>
+      <td>
+        {{ $m->description }}
+      </td>
+    <td>
+      {!! QrCode::size(100)->generate('/showItem/'.$m->id); !!}
+    </td>
+    <td>
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <a class="btn btn-success" aria-current="page" href="{{ '/showItem/'.$m->id }}">View</a>
+      <a class="btn btn-danger" aria-current="page" href="{{ '/delete/'.$m->id }}">Delet</a>
+    </div>
+    </td>
+    </tr>
+    @endforeach
+  </tbody>
+  </table>
 
 @endsection
