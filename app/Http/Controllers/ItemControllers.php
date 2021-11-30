@@ -43,12 +43,17 @@ class ItemControllers extends Controller
         $item->item_code = $request->item_code;
         $item->name = $request->name;
         $item->number_register = $request->register;
+        $item->brand = $request->brand;
         $item->size = $request->size;
         $item->material = $request->material;
-        $item->price = $request->price;
         $item->purchased = $request->purchased;
+        $item->no_factory = $request->no_factory;
+        $item->no_frame = $request->no_frame;
+        $item->no_machine = $request->no_machine;
+        $item->no_police = $request->no_police;
+        $item->no_bpkb = $request->no_bpkb;
         $item->origin = $request->origin;
-        $item->brand = $request->brand;
+        $item->price = $request->price;
         $item->description = $request->description;
         if (Item::exists()) {
             $lastItem = Item::select('id')->latest('created_at')->first();

@@ -1,6 +1,11 @@
 @extends('layouts.master')
 @section('content')
-
+@if (session('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+{{ session('success') }}
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <table class="table table-striped justify-content-center">
   <thead>
     <tr>
@@ -90,19 +95,19 @@
         {{ $m->purchased }}
       </td>
       <td>
-        No Pabrik
+        {{ $m->no_factory }}
       </td>
       <td>
-        No Rangka
+        {{ $m->no_frame }}
       </td>
       <td>
-        No Mesin
+        {{ $m->no_machine }}
       </td>
       <td>
-        No Polisi
+        {{ $m->no_police }}
       </td>
       <td>
-        No BPKB
+        {{ $m->no_bpkb }}
       </td>
       <td>
         {{ $m->origin }}
@@ -126,5 +131,24 @@
     @endforeach
   </tbody>
   </table>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Import CSV</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="import" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="input-group mb-3">
+                      <input type="file" name="file" class="form-control">
+                      <button class="btn btn-primary" type="submit">Submit</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  </div>
 @endsection

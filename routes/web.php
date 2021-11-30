@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ItemsImport;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +21,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/listItem', 'ItemControllers@index'); // go to listItem
     Route::get('/insertItem', 'ItemControllers@create'); // go to insert item
     Route::get('/delete/{id}', 'ItemControllers@destroy'); // delete item
-    Route::post('/insert', 'ItemControllers@store'); // send insrtdata to tabel
+    Route::post('insert', 'ItemControllers@store'); // send insrtdata to tabel
     Route::get('/qrcode', 'QrcodeController@index'); // qrcode
-
+    Route::post('import', function () {
+        Excel::import(new ItemsImport, request()->file('file'));
+        return redirect()->back()->with('success', 'Data Imported Successfully');
+    });
 });
-// Route::post('import', function () {
-//     Excel::import(new UsersImport, request()->file('file'));
-//     return redirect()->back()->with('success', 'Data Imported Successfully');
-// });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

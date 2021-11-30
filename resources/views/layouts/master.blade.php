@@ -21,6 +21,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ '/insertItem' }}">Insert</a>
               </li>
+              <li>
+              <a href="" class="btn btn-primary me-1">Export Data</a>
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+               Import Data
+               </button>
+              </li>
              </ul>
             <form class="d-flex">
               
@@ -28,17 +34,15 @@
               <button class="btn btn-outline-success me-1" type="submit">Search</button>
             </form>
             @if (Route::has('login'))
-              <div class="btn btn-outline-primary" type="submit">
-                  @auth
-                      <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                  @else
-                  <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                       {{-- @if (Route::has('register'))
-                          <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                      @endif  --}}
-                   @endauth
-              </div>
-          @endif
+            <div class="btn btn-outline-primary " type="submit">
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                @else
+                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                @endauth
+            </div>
+        @endif
+
           </div>
         </div>
       </nav>

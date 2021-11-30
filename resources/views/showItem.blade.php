@@ -41,27 +41,27 @@
   <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-2">No Pabrik</div>
-    <div class="col">  {{ $Item->item_code }} </div>
+    <div class="col">  {{ $Item->no_factory }} </div>
   </div>
   <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-2">No Rangka</div>
-    <div class="col">  kosong </div>
+    <div class="col">  {{ $Item->no_frame }} </div>
   </div>
   <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-2">No Mesin</div>
-    <div class="col">  kosong </div>
+    <div class="col">  {{ $Item->no_machine }} </div>
   </div>
   <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-2">No polisi</div>
-    <div class="col">  kosong </div>
+    <div class="col">  {{ $Item->no_police }} </div>
   </div>  
   <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-2">No BPKB</div>
-    <div class="col">  kosong </div>
+    <div class="col">  {{ $Item->no_bpkb }} </div>
   </div>
   <div class="row">
     <div class="col-lg-4"></div>
