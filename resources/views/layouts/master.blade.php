@@ -25,14 +25,30 @@
             <form class="d-flex">
               
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-              <form action="/logout" >@csrf <button class="btn btn-outline-primary ms-2" type="submit">Logout</button></form>
+              <button class="btn btn-outline-success me-1" type="submit">Search</button>
             </form>
+            @if (Route::has('login'))
+              <div class="btn btn-outline-primary" type="submit">
+                  @auth
+                      <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                  @else
+                  <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                       {{-- @if (Route::has('register'))
+                          <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                      @endif  --}}
+                   @endauth
+              </div>
+          @endif
           </div>
         </div>
       </nav>
     <div class="container">
-    @yield('content')
+      <div class="card">
+        <div class="card-body">
+          @yield('content')
+        </div>
+      </div>
+  
 </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

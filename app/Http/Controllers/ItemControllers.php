@@ -110,9 +110,9 @@ class ItemControllers extends Controller
         $item->delete();
         return back();
     }
-    public function logout()
-    {
-        $user = Auth::user();
-        $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
-    }
+    // public function logout()
+    // {
+    //     $user = Auth::user();
+    //     $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+    // }
 }

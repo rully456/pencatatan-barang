@@ -14,16 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/', 'ItemControllers@index'); // go to listItem
+Route::get('/showItem/{id}', 'ItemControllers@show'); // go to showItem
 Route::middleware('auth')->group(function () {
-    Route::get('/showItem/{id}', 'ItemControllers@show'); // go to showItem
     Route::get('/listItem', 'ItemControllers@index'); // go to listItem
-    Route::get('/', 'ItemControllers@index'); // go to listItem
     Route::get('/insertItem', 'ItemControllers@create'); // go to insert item
     Route::get('/delete/{id}', 'ItemControllers@destroy'); // delete item
-    Route::post('insert', 'ItemControllers@store'); // send insrtdata to tabel
+    Route::post('/insert', 'ItemControllers@store'); // send insrtdata to tabel
     Route::get('/qrcode', 'QrcodeController@index'); // qrcode
-    Route::post('/logout', 'ItemControllers@logout');
+
 });
 // Route::post('import', function () {
 //     Excel::import(new UsersImport, request()->file('file'));
